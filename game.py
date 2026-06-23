@@ -2,6 +2,8 @@ from pick import pick
 import sys
 
 sneaking = False
+path_2=false
+path_3=false
 
 def get_stats_string(player_stats):
     return (
@@ -235,4 +237,118 @@ elif options == opt_c:
     print("Effect Applied: +5 PAS, +5 REB\n")
 
 lose(stats)
+
+title = get_stats_string(stats) + '\n you got into high school, chose your course'
+
+opt_a = 'chose advanced placement (hardest)'
+opt_b = 'chose stranderd course'
+opt_c = 'chose stranderd course but also with art as an elective'
+
+options = [opt_a,opt_b]
+
+if stats['PAS']>=40:
+    options.append(opt_c)
+
+options, device_index = pick(options, title, indicator='=>',defualt_index=0)
+
+if options == opt_a:
+    stats['FP'] +=15
+    stats['SAN'] -=10
+    stats['PAS'] -=10
+    print('effect= fp+15, San-10, pas -10')
+if options== opt_b:
+    stats['REB'] +=10
+    stats['SAN'] +=10
+    print("effects = reb +10, sanity +10")
+if options == opt_c:
+    stats['PAS'] +=20
+    stats['FP'] -=5
+    stats['SAN'] -=5
+    print("effect= pas + 20, fp-5 and san -5 turnout hobbies can make u insane too (just a bit) ")
+
+    lose(stats)
+
+    #wow your reading the code and have gotten this far
+
+    title= get_stats_string(stats) + '\n you found that you have a passion for flight sims and avation '
+
+    opt_a = 'say its just a temporary distraction'
+    opt_b = 'defend it '
+    opt_c = 'tell then it can be good for collage (cuz ur a good kid and your parents belive in you) '
+
+    options = [opt_a, opt_b]
+    if stats['FP']>=50
+    options.append(opt_c)
+
+    options, device_index = pick(options, title, indicator='=>', defualt_index=0)
+
+    if options == opt_a:
+        stats['FP']+=10
+        stats['PAS']-=15
+        print('effects= fp + 10, pas-15')
+    if options == opt_b:
+        stats['REB']+=15
+        stats['FP']-=10
+        stats['PAS']+=15
+        print("effect= reb + 15, fp - 10, pas + 15")
+    if options == opt_c:
+        stats['FP']+=10
+        stats['PAS']+=15
+        print("effect= fp + 10, pas + 10 wow your clever")
+
+        lose(stats) #almost forgot to add this beofore commiting haha
+    
+    title= get_stats_string(stats) + '\n you graduated from high school now its collage time'
+
+    opt_a = 'apply to good collages in LAW, MEDICAL or ENGNERRING'
+    opt_b = 'apply for libral arts in secret (unlocks new path)'
+    opt_c = 'apply to both openly (rare option, unlocks a new path)'
+
+    options=[opt_a, opt_b]
+    if stats['REB']>=40 and stats['FP']>=40:
+        options.append(opt_c)
+    options, device_index = pick(options, title, indicator='=>', defualt_index=0)
+
+    if options == opt_a:
+        stats['FP']+=20
+        stats['SAN']-=20
+        stats['PAS']-=20
+        print('effects= fp + 20 , san-20, pas - 20')
+    if options == opt_b:
+        stats['REB']+=20
+        stats['FP']-=10
+        stats['PAS']+=15
+        print("effect= reb + 20, fp - 10, pas+ 15")
+        path_2=true
+    if options == opt_c:
+        stats['REB']+=10
+        stats['FP']-=5
+        stats['SAN']-=5
+        path_3=true
+        print("effcts= reb + 10, fp - 5, san - 5")
+    
+lose(stats)
+
+if path_2=false and path_3 =false:
+    title = get_stats_string(stats) + '\n you got selected into harvard'
+
+    opt_a = 'go to harvard and leave your passion'
+    opt_b = 'go but keep your passion as a hidden hobby'
+
+    options=[opt_a, opt_b]
+    options,device_index = pick(options, title, indicator='=>', defualt_index=0)
+
+    if options == opt_a:
+        stats['FP']+=20
+        stats['PAS']-=30
+        print("effects= fp + 20, pas -30")
+    if options == opt_b:
+        stats['PAS']+=10
+        stats['SAN']-15
+        print(" effects= pas + 10, -15 san")
+
+#continue from 4.2b
+
+
+    
 
