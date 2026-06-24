@@ -4,6 +4,7 @@ import sys
 sneaking = False
 path_2=false
 path_3=false
+arts=flase
 
 def get_stats_string(player_stats):
     return (
@@ -347,7 +348,113 @@ if path_2=false and path_3 =false:
         stats['SAN']-15
         print(" effects= pas + 10, -15 san")
 
-#continue from 4.2b
+elif path_2=true:
+    title = get_stats_string(stats) + '\n you got selected into harvard and libral arts collage'
+
+    opt_a = 'hold your ground and do to libral arts collage '
+    opt_b = 'let your parents emotional blackmail work and go to harvard'
+
+    options = [opt_a, opt_b]
+    options,device_index = pick(options, title, indicator'=>', default_index=0)
+
+    if options == opt_a:
+        stats['REB']+=30
+        stats['FP']-=30
+        print("effects= reb + 30, fp - 30")
+        arts=true
+    if options == opt_b:
+        stats['FP']-=15
+        stats['PAS']-=20
+        stats['SAN']+=15
+        print("effects= fp - 15, pas - 20, san +15 ")
+else:
+    title = get_stats_string(stats) + '\n you got selected in both collages'
+
+    opt_a = 'manage double life secussfully'
+    opt_b = 'get caught by aunties'
+
+    options = [opt_a, opt_b]
+    options,device_index = pick(options,title, indicator'=>', default_index=0)
+
+    if options == opt_a:
+        stats['FP']+=10
+        stats['REB']+=10
+        stats['SAN']-=10
+        print=("effects= fp-10, reb + 10, san-10")
+
+    if options == opt_b:
+        stats['FP']-20
+        stats['REB']+=20
+        print("effects= FP - 20, REB + 20 ") 
+
+
+print(r""" __     ______  _    _    _____ _    _ _____  __      _______ _____  ______ _____  _ 
+ \ \   / / __ \| |  | |  / ____| |  | |  __ \ \ \    / /_   _|  __ \|  ____|  __ \| |
+  \ \_/ / |  | | |  | | | (___ | |  | | |__) | \ \  / /  | | | |__) | |__  | |  | | |
+   \   /| |  | | |  | |  \___ \| |  | |  _  /   \ \/ /   | | |  _  /|  __| | |  | | |
+    | | | |__| | |__| |  ____) | |__| | | \ \    \  /   _| |_| | \ \| |____| |__| |_|
+    |_|  \____/ \____/  |_____/ \____/|_|  \_\    \/   |_____|_|  \_\______|_____/(_)""")
+
+
+def determine_life_path(stats, choice_3_4_taken=False):
+    
+    fp = stats.get("FP", 0)    # Filial Piety / Financial Performance
+    san = stats.get("SAN", 0)  # Sanity
+    reb = stats.get("REB", 0)  # Rebellion
+    pas = stats.get("PAS", 0)  # Passion / Passive Income
+    
+    
+    if fp >= 75:
+        return ("Triple-Threat Prodigy", 
+                "High-achieving, barely avoided the hollow rail. Intact but tired.")
+        
+    
+    elif fp >= 65 and san <= 35:
+        return ("Corporate Zombie", 
+                "High salary, dead eyes. A LinkedIn profile your parents constantly screenshot.")
+        
+    
+    elif reb >= 65:
+        return ("Disowned Artist", 
+                "Cut off financially, thriving creatively, blocked on the family group chat.")
+        
+    
+    elif (40 <= fp <= 65) and (40 <= reb <= 65) and san >= 55 and choice_3_4_taken:
+        return ("The Reconciled Path", 
+                "You got what you wanted, and the relationship survived.")
+        
+    
+    elif fp >= 45 and (35 <= pas <= 60):
+        return ("Family Business Heir", 
+                "Equal parts duty and genuine fondness taking over the shop.")
+        
+    
+    elif pas >= 65 and reb >= 45:
+        return ("Accidental Influencer", 
+                "A chaotic internet career they publicly criticize but secretly Google.")
+        
+  
+    else:
+        return ("Boomerang Kid", 
+                "Moved back home at 27. Nobody quite knows how to talk about it.")
+
+
+
+
+player_1_stats = {"FP": 70, "SAN": 20, "REB": 10, "PAS": 40}
+path, description = determine_life_path(player_1_stats)
+print(f"Path: {path}\nDescription: {description}\n")
+
+
+player_2_stats = {"FP": 50, "SAN": 60, "REB": 50, "PAS": 30}
+path, description = determine_life_path(player_2_stats, choice_3_4_taken=True)
+print(f"Path: {path}\nDescription: {description}\n")
+
+
+player_3_stats = {"FP": 40, "SAN": 40, "REB": 35, "PAS": 40}
+path, description = determine_life_path(player_3_stats)
+print(f"Path: {path}\nDescription: {description}\n")
+
 
 
     
