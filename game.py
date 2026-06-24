@@ -267,39 +267,39 @@ if options == opt_c:
     stats['SAN'] -=5
     print("effect= pas + 20, fp-5 and san -5 turnout hobbies can make u insane too (just a bit) ")
 
-    lose(stats)
+lose(stats)
 
     #wow your reading the code and have gotten this far
 
-    title= get_stats_string(stats) + '\n you found that you have a passion for flight sims and avation '
+title= get_stats_string(stats) + '\n you found that you have a passion for flight sims and avation '
 
-    opt_a = 'say its just a temporary distraction'
-    opt_b = 'defend it '
-    opt_c = 'tell then it can be good for collage (cuz ur a good kid and your parents belive in you) '
+opt_a = 'say its just a temporary distraction'
+opt_b = 'defend it '
+opt_c = 'tell then it can be good for collage (cuz ur a good kid and your parents belive in you) '
 
-    options = [opt_a, opt_b]
-    if stats['FP']>=50
-    options.append(opt_c)
+options = [opt_a, opt_b]
+if stats['FP']>=50
+options.append(opt_c)
 
-    options, device_index = pick(options, title, indicator='=>', defualt_index=0)
+options, device_index = pick(options, title, indicator='=>', defualt_index=0)
 
-    if options == opt_a:
+if options == opt_a:
         stats['FP']+=10
         stats['PAS']-=15
         print('effects= fp + 10, pas-15')
-    if options == opt_b:
+if options == opt_b:
         stats['REB']+=15
         stats['FP']-=10
         stats['PAS']+=15
         print("effect= reb + 15, fp - 10, pas + 15")
-    if options == opt_c:
+if options == opt_c:
         stats['FP']+=10
         stats['PAS']+=15
         print("effect= fp + 10, pas + 10 wow your clever")
 
-        lose(stats) #almost forgot to add this beofore commiting haha
+lose(stats) #almost forgot to add this beofore commiting haha
     
-    title= get_stats_string(stats) + '\n you graduated from high school now its collage time'
+title= get_stats_string(stats) + '\n you graduated from high school now its collage time'
 
     opt_a = 'apply to good collages in LAW, MEDICAL or ENGNERRING'
     opt_b = 'apply for libral arts in secret (unlocks new path)'
@@ -345,7 +345,7 @@ if path_2=false and path_3 =false:
         print("effects= fp + 20, pas -30")
     if options == opt_b:
         stats['PAS']+=10
-        stats['SAN']-15
+        stats['SAN']-=15
         print(" effects= pas + 10, -15 san")
 
 elif path_2=true:
@@ -383,7 +383,7 @@ else:
         print=("effects= fp-10, reb + 10, san-10")
 
     if options == opt_b:
-        stats['FP']-20
+        stats['FP']-+20
         stats['REB']+=20
         print("effects= FP - 20, REB + 20 ") 
 
@@ -454,6 +454,17 @@ print(f"Path: {path}\nDescription: {description}\n")
 player_3_stats = {"FP": 40, "SAN": 40, "REB": 35, "PAS": 40}
 path, description = determine_life_path(player_3_stats)
 print(f"Path: {path}\nDescription: {description}\n")
+
+
+path, description = determine_life_path(stats, choice_3_4_taken=path_3)
+
+
+print(f"\nYour Path: {path}")
+print(f"Description: {description}\n")
+
+
+#thanks for reading this whole code btw this is my biggest python project yet and i know that my code is probebly hel togather by digital duct tape 
+
 
 
 
