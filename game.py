@@ -2,9 +2,9 @@ from pick import pick
 import sys
 
 sneaking = False
-path_2=false
-path_3=false
-arts=flase
+path_2=False
+path_3=False
+arts=False
 
 def get_stats_string(player_stats):
     return (
@@ -32,6 +32,9 @@ def lose(check):
         sys.exit()
     elif check['PAS'] < 0:
         print('You became a neurosurgeon at 21, but lost your passion and now need therapy every week.\n GAME OVER ')
+        sys.exit()
+    elif check['SAN'] < 0:
+        print("you became insane and burnt your self out")
         sys.exit()
 
 print('How the game works:\nYou have 4 stats:\n'
@@ -250,7 +253,7 @@ options = [opt_a,opt_b]
 if stats['PAS']>=40:
     options.append(opt_c)
 
-options, device_index = pick(options, title, indicator='=>',defualt_index=0)
+options, device_index = pick(options, title, indicator='=>',default_index=0)
 
 if options == opt_a:
     stats['FP'] +=15
@@ -278,10 +281,10 @@ opt_b = 'defend it '
 opt_c = 'tell then it can be good for collage (cuz ur a good kid and your parents belive in you) '
 
 options = [opt_a, opt_b]
-if stats['FP']>=50
-options.append(opt_c)
+if stats['FP']>=50:
+    options.append(opt_c)
 
-options, device_index = pick(options, title, indicator='=>', defualt_index=0)
+options, device_index = pick(options, title, indicator='=>', default_index=0)
 
 if options == opt_a:
         stats['FP']+=10
@@ -301,43 +304,43 @@ lose(stats) #almost forgot to add this beofore commiting haha
     
 title= get_stats_string(stats) + '\n you graduated from high school now its collage time'
 
-    opt_a = 'apply to good collages in LAW, MEDICAL or ENGNERRING'
-    opt_b = 'apply for libral arts in secret (unlocks new path)'
-    opt_c = 'apply to both openly (rare option, unlocks a new path)'
+opt_a = 'apply to good collages in LAW, MEDICAL or ENGNERRING'
+opt_b = 'apply for libral arts in secret (unlocks new path)'
+opt_c = 'apply to both openly (rare option, unlocks a new path)'
 
-    options=[opt_a, opt_b]
-    if stats['REB']>=40 and stats['FP']>=40:
+options=[opt_a, opt_b]
+if stats['REB']>=40 and stats['FP']>=40:
         options.append(opt_c)
-    options, device_index = pick(options, title, indicator='=>', defualt_index=0)
+options, device_index = pick(options, title, indicator='=>', default_index=0)
 
-    if options == opt_a:
+if options == opt_a:
         stats['FP']+=20
         stats['SAN']-=20
         stats['PAS']-=20
         print('effects= fp + 20 , san-20, pas - 20')
-    if options == opt_b:
+if options == opt_b:
         stats['REB']+=20
         stats['FP']-=10
         stats['PAS']+=15
         print("effect= reb + 20, fp - 10, pas+ 15")
-        path_2=true
-    if options == opt_c:
+        path_2=True
+if options == opt_c:
         stats['REB']+=10
         stats['FP']-=5
         stats['SAN']-=5
-        path_3=true
+        path_3=True
         print("effcts= reb + 10, fp - 5, san - 5")
     
 lose(stats)
 
-if path_2=false and path_3 =false:
+if path_2==False and path_3==False:
     title = get_stats_string(stats) + '\n you got selected into harvard'
 
     opt_a = 'go to harvard and leave your passion'
     opt_b = 'go but keep your passion as a hidden hobby'
 
     options=[opt_a, opt_b]
-    options,device_index = pick(options, title, indicator='=>', defualt_index=0)
+    options,device_index = pick(options, title, indicator='=>', default_index=0)
 
     if options == opt_a:
         stats['FP']+=20
@@ -348,20 +351,20 @@ if path_2=false and path_3 =false:
         stats['SAN']-=15
         print(" effects= pas + 10, -15 san")
 
-elif path_2=true:
+elif path_2==True:
     title = get_stats_string(stats) + '\n you got selected into harvard and libral arts collage'
 
     opt_a = 'hold your ground and do to libral arts collage '
     opt_b = 'let your parents emotional blackmail work and go to harvard'
 
     options = [opt_a, opt_b]
-    options,device_index = pick(options, title, indicator'=>', default_index=0)
+    options, device_index = pick(options, title, indicator='=>', default_index=0)
 
     if options == opt_a:
         stats['REB']+=30
         stats['FP']-=30
         print("effects= reb + 30, fp - 30")
-        arts=true
+        arts=True
     if options == opt_b:
         stats['FP']-=15
         stats['PAS']-=20
@@ -374,16 +377,16 @@ else:
     opt_b = 'get caught by aunties'
 
     options = [opt_a, opt_b]
-    options,device_index = pick(options,title, indicator'=>', default_index=0)
+    options,device_index = pick(options,title, indicator='=>', default_index=0)
 
     if options == opt_a:
         stats['FP']+=10
         stats['REB']+=10
         stats['SAN']-=10
-        print=("effects= fp-10, reb + 10, san-10")
+        print("effects= fp-10, reb + 10, san-10")
 
     if options == opt_b:
-        stats['FP']-+20
+        stats['FP']-=20
         stats['REB']+=20
         print("effects= FP - 20, REB + 20 ") 
 
