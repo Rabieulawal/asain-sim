@@ -4,6 +4,10 @@ try not to study till you become insane but also not get kicked out for being a 
 
 will you be able to make the choices required in life.
 
+
+<img width="324" height="243" alt="image" src="https://github.com/user-attachments/assets/be586304-1f4d-4ee0-8b73-a06f479e2e85" />
+
+
 ## how this works
 so basically thare are your stats which include 
 
