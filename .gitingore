@@ -1,0 +1,10 @@
+# Ignore all executable files
+*.exe
+
+# Ignore building/compilation folders
+bin/
+obj/
+
+# Ignore OS-specific hidden files
+.DS_Store
+Thumbs.db
